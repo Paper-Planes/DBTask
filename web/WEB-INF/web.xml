@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+    <!--登陆过滤器-->
+    <filter>
+        <filter-name>Login</filter-name>
+        <filter-class>util.loginfilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>Login</filter-name>
+        <!--这里的/admin/* 表示是指定路径下的文件需要过滤   也可以写为 <url-pattern>/*</url-pattern> 表示所有文件都需要过滤-->
+        <url-pattern>/Task/*</url-pattern>
+    </filter-mapping>
+
+    <!--验证码-->
+    <servlet>
+        <servlet-name>checkCode</servlet-name>
+        <servlet-class>servlet.CheckCodeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>checkCode</servlet-name>
+        <url-pattern>/checkCode</url-pattern>
+    </servlet-mapping>
+    <!-- 顾客登录 -->
+    <servlet>
+        <servlet-name>phLogin</servlet-name>
+        <servlet-class>servlet.phLoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>phLogin</servlet-name>
+        <url-pattern>/phLogin</url-pattern>
+    </servlet-mapping>
+    <!-- 顾客注册-->
+    <servlet>
+        <servlet-name>phRegister</servlet-name>
+        <servlet-class>servlet.phRegisterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>phRegister</servlet-name>
+        <url-pattern>/phRegister</url-pattern>
+    </servlet-mapping>
+    <!--更改顾客信息-->
+    <servlet>
+        <servlet-name>updatePolicyholder</servlet-name>
+        <servlet-class>servlet.updatePolicyholderServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>updatePolicyholder</servlet-name>
+        <url-pattern>/updatePolicyholder</url-pattern>
+    </servlet-mapping>
+
+
+    <!-- 员工登录 -->
+    <servlet>
+        <servlet-name>empLogin</servlet-name>
+        <servlet-class>servlet.empLoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>empLogin</servlet-name>
+        <url-pattern>/empLogin</url-pattern>
+    </servlet-mapping>
+    <!--增加员工信息-->
+    <servlet>
+        <servlet-name>addEmp</servlet-name>
+        <servlet-class>servlet.addEmpServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addEmp</servlet-name>
+        <url-pattern>/addEmp</url-pattern>
+    </servlet-mapping>
+    <!--删除员工信息-->
+    <servlet>
+        <servlet-name>deleteEmp</servlet-name>
+        <servlet-class>servlet.deleteEmpServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>deleteEmp</servlet-name>
+        <url-pattern>/deleteEmp</url-pattern>
+    </servlet-mapping>
+    <!--更改员工信息-->
+    <servlet>
+        <servlet-name>updateEmp</servlet-name>
+        <servlet-class>servlet.updateEmpServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>updateEmp</servlet-name>
+        <url-pattern>/updateEmp</url-pattern>
+    </servlet-mapping>
+
+
+    <!--添加车辆信息-->
+    <servlet>
+        <servlet-name>addCarPh</servlet-name>
+        <servlet-class>servlet.addCarPhServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addCarPh</servlet-name>
+        <url-pattern>/addCarPh</url-pattern>
+    </servlet-mapping>
+
+    <!--Ph购买保险信息-->
+    <servlet>
+        <servlet-name>buyInsurance</servlet-name>
+        <servlet-class>servlet.buyInsuranceServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>buyInsurance</servlet-name>
+        <url-pattern>/buyInsurance</url-pattern>
+    </servlet-mapping>
+    <!--修改保单信息-->
+    <servlet>
+        <servlet-name>updateInsurance</servlet-name>
+        <servlet-class>servlet.updateInsuranceServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>updateInsurance</servlet-name>
+        <url-pattern>/updateInsurance</url-pattern>
+    </servlet-mapping>
+
+    <!--Ph事故报案-->
+    <servlet>
+        <servlet-name>phAccReportAdd</servlet-name>
+        <servlet-class>servlet.phAccReportAddServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>phAccReportAdd</servlet-name>
+        <url-pattern>/phAccReportAdd</url-pattern>
+    </servlet-mapping>
+
+    <!--理赔-->
+    <servlet>
+        <servlet-name>addSurvey</servlet-name>
+        <servlet-class>servlet.addSurveyServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addSurvey</servlet-name>
+        <url-pattern>/addSurvey</url-pattern>
+    </servlet-mapping>
+
+</web-app>

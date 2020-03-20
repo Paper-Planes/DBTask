@@ -1,0 +1,140 @@
+// 计算字符串 str 的长度
+function getLength(str) {
+    return str.replace(/[^\x00-xff]/g, "xx").length;
+}
+//判断是否全为数字和字母
+function number(str) {
+    //var reg=/^[0-9]+$/;
+    var reg= /^[0-9a-zA-Z]+$/;
+    var result=reg.test(str);
+    return result;
+}
+
+//判断是否全为数字
+function numb(str) {
+    var reg= /^[0-9]+$/;
+    var result=reg.test(str);
+    return result;
+}
+//手机号验证，11位，正确的是手机号开头位13*，15*，18*
+function isPhone(str){
+    var reg=new RegExp("^((13[0-9])|(15[0-9])|(18[0-9]))\\d{8}$");
+    var result=reg.test(str);
+    return result;
+}
+
+
+// 验证
+window.onload = function() {
+    // 获取对象
+    var phName = document.getElementById("phName");
+    var phNameLength = 0;
+    var phNameMsg = document.getElementById("phNameMsg");
+    var phPwd1 = document.getElementById("phPwd1");
+    var phPwd1Length = 0;
+    var phPwd1Msg = document.getElementById("phPwd1Msg");
+    var phPwd2 = document.getElementById('phPwd2');
+    var phPwd2Msg = document.getElementById("phPwd2Msg");
+    var phID = document.getElementById("phID");
+    var phIDLength=0;
+    var phIDMsg = document.getElementById("phIDMsg");
+    var phID2 = document.getElementById("phID2");
+    var phID2Msg = document.getElementById("phID2Msg");
+    var phPhone = document.getElementById("phPhone");
+    var phPhoneMsg = document.getElementById("phPhoneMsg");
+    var phAddr=document.getElementById("phAddr");
+    var phAddrLength=0;
+    var phAddrMsg=document.getElementById("phAddrMsg");
+    var register = document.getElementById("update");
+    //对姓名进行验证
+    phName.onkeyup=function(){
+        phNameLength = getLength(this.value);
+        if (phNameLength < 4) {
+            phNameMsg.innerHTML = "当前" + phNameLength + "个字符，"+'<a style="color: orangered;">姓名过短</a>';
+        } else if (phNameLength <= 20) {
+            phNameMsg.innerHTML = "当前" + phNameLength + "个字符，姓名格式正确";
+        } else {
+            phNameMsg.innerHTML = "当前" + phNameLength + "个字符，"+'<a style="color: orangered;">姓名过长</a>';
+        }
+
+    }
+    // 对密码进行验证
+    phPwd1.onkeyup = function() {
+        phPwd1Length = getLength(this.value);
+        if(phPwd1Length < 4) {
+            phPwd1Msg.innerHTML = "当前" + phPwd1Length + "个字符，"+'<a style="color: orangered;">密码过短</a>';
+            phPwd2.setAttribute('disabled', "");
+        }
+        else if(phPwd1Length <= 20) {
+            phPwd1Msg.innerHTML = "当前" + phPwd1Length + "个字符，密码正常";
+            phPwd2.removeAttribute('disabled');
+        }
+        else {
+            phPwd1Msg.innerHTML = "当前" + phPwd1Length + "个字符，"+'<a style="color: orangered;">密码过长</a>';
+            phPwd2.setAttribute('disabled', "");
+        }
+    }
+
+    // 对重复输入的密码进行验证
+    phPwd2.onkeyup = function() {
+        if(this.value == phPwd1.value) {
+            phPwd2Msg.innerHTML = "输入正确!";
+            register.removeAttribute('disabled');
+        }
+        else {
+            phPwd2Msg.innerHTML = '<a style="color: orangered;">两次密码输入不匹配!</a>';
+            register.setAttribute('disabled', "");
+        }
+    }
+    //对身份证号进行验证
+    phID.onkeyup=function(){
+        if (!numb(this.value)) {
+            phIDMsg.innerHTML = '<a style="color: orangered;">身份证号中含有非法字符</a>';
+            phID2.setAttribute('disabled', "");
+        }
+        else {
+            phIDLength = getLength(this.value);
+            if (phIDLength < 18) {
+                phIDMsg.innerHTML = "当前" + phIDLength + "个字符，"+'<a style="color: orangered;">身份证号过短</a>';
+                phID2.setAttribute('disabled', "");
+            } else if (phIDLength = 18) {
+                phIDMsg.innerHTML = "当前" + phIDLength + "个字符，身份证号格式正确";
+                phID2.removeAttribute('disabled');
+            } else {
+                phIDMsg.innerHTML = "当前" + phIDLength + "个字符，"+'<a style="color: orangered;">身份证号过长</a>';
+                phID2.setAttribute('disabled', "");
+            }
+        }
+    }
+    // 对重复输入的身份证号进行验证
+    phID2.onkeyup = function() {
+        if(this.value == phID.value) {
+            phID2Msg.innerHTML = "输入正确!";
+            register.removeAttribute('disabled');
+        }
+        else {
+            phID2Msg.innerHTML = '<a style="color: orangered;">两次密码输入不匹配!</a>';
+            register.setAttribute('disabled', "");
+        }
+    }
+    //对电话号码进行验证
+    phPhone.onkeyup=function(){
+        if(isPhone(this.value)){
+            phPhoneMsg.innerHTML = '手机号码正确';
+        }else{
+            phPhoneMsg.innerHTML = '<a style="color: orangered;">您输入的电话格式有误</a>';
+        }
+    }
+
+    //对地址进行验证
+    phAddr.onkeyup=function(){
+        phAddrLength = getLength(this.value);
+        if (phAddrLength < 4) {
+            phAddrMsg.innerHTML = "当前" + phAddrLength + "个字符，"+'<a style="color: orangered;">地址过短</a>';
+        } else if (phAddrLength <= 50) {
+            phAddrMsg.innerHTML = "当前" + phAddrLength + "个字符，地址格式正确";
+        } else {
+            phAddrMsg.innerHTML = "当前" + phAddrLength + "个字符，"+'<a style="color: orangered;">地址过长</a>';
+        }
+    }
+}

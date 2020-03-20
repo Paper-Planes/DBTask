@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="lib1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/mssql-jdbc-7.0.0.jre10.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/jcommon-1.0.23.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/jfreechart-1.0.19.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,67 @@
+
+#fm {/*设置盒子的行高，去掉标记，设置背景颜色*/
+    line-height: 24px;
+    float: right;
+}
+#fm a {/*设置A标签为块元素不显示，宽度，居中*/
+    display: block;
+    width: 140px;
+    text-align:left;
+}
+#fm a:link {/* 设置未访问的链接样式*/
+    color:#666;
+    font-size: 15px;
+}
+#fm a:visited { /* 设置已访问的链接样式 */
+    color:#666;
+}
+#fm a:hover { /* 当有鼠标悬停在链接上的颜色 */
+    color:#FFF;
+    font-weight:bold;
+}
+#fm li {
+    float: left;
+    width: 140px;
+}
+#fm li a:hover{
+    background: #a1e9ff;
+}
+#fm li ul {
+    line-height: 27px;
+    list-style-type: none;
+    text-align:left;
+    left: -999em;
+    width: 139px;
+    position: absolute;
+}
+#fm li ul li{
+    float: left;
+    width: 140px;
+    background: #f6e0dc;
+}
+#fm li ul a{
+    display: block;
+    width: 130px;
+    text-align:left;
+    padding-left:5px;
+}
+#fm li ul a:link {
+    color:#666;
+}
+#fm li ul a:visited {
+    color:#666;
+}
+#fm li ul a:hover {
+    color:#F3F3F3;
+    font-weight:normal;
+    background: #ff8269;
+}
+#fm li:hover ul {
+    left: auto;
+}
+#fm li.sfhover ul {
+    left: auto;
+}
+#content {
+    clear: left;
+}
